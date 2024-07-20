@@ -1,0 +1,94 @@
+<div class="dashboard">
+  <div class="dashboard-nav">
+    <!-- <header>
+      <a (click)="toggleMenu()" class="menu-toggle"><i class="fas fa-bars"></i></a>
+      <a href="#" class="brand-logo">
+        <i class="fa-solid fa-user-shield"></i>
+      </a>
+    </header> -->
+    <nav class="dashboard-nav-list">
+      <a href="#" class="dashboard-nav-item">
+        <i class="fas fa-home"></i> Home
+      </a>
+      <a href="dept" class="dashboard-nav-item active">
+        <i class="fas fa-sitemap"></i> Departments
+      </a>
+      <a href="emp" class="dashboard-nav-item">
+        <i class="fa-solid fa-address-card"></i> Employee Details
+      </a>
+      <div class="dashboard-nav-dropdown">
+        <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle" (click)="toggleDropdown($event, 'taskDropdown')">
+          <i class="fa-sharp fa-solid fa-list-check"></i> Master Screen
+        </a>
+        <div *ngIf="dropdownStates['taskDropdown']" class="dashboard-nav-dropdown-menu">
+          <a href="emp" class="dashboard-nav-dropdown-item">Emp</a>
+          <a href="dept" class="dashboard-nav-dropdown-item">Dept</a>
+          
+        </div>
+      </div>
+      <div class="dashboard-nav-dropdown">
+        <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle" (click)="toggleDropdown($event, 'usersDropdown')">
+          <i class="fas fa-users"></i> Users
+        </a>
+        <div *ngIf="dropdownStates['usersDropdown']" class="dashboard-nav-dropdown-menu">
+
+          <a href="#" class="dashboard-nav-dropdown-item">All</a>
+          <a href="#" class="dashboard-nav-dropdown-item">Subscribed</a>
+          <a href="#" class="dashboard-nav-dropdown-item">Non-subscribed</a>
+          <a href="#" class="dashboard-nav-dropdown-item">Banned</a>
+          <a href="#" class="dashboard-nav-dropdown-item">New</a>
+        </div>
+      </div>
+      <div class="dashboard-nav-dropdown">
+        <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle" (click)="toggleDropdown($event, 'meetingsDropdown')">
+          <i class="fa-sharp fa-solid fa-calendar-days"></i> Meetings
+        </a>
+        <div *ngIf="dropdownStates['meetingsDropdown']" class="dashboard-nav-dropdown-menu">
+
+          <a href="#" class="dashboard-nav-dropdown-item">All</a>
+          <a href="#" class="dashboard-nav-dropdown-item">Recent</a>
+          <a href="#" class="dashboard-nav-dropdown-item">Projections</a>
+        </div>
+      </div>
+      <a href="#" class="dashboard-nav-item">
+        <i class="fas fa-cogs"></i> Settings
+      </a>
+      <a href="#" class="dashboard-nav-item">
+        <i class="fas fa-user"></i> Profile
+      </a>
+      <div class="nav-item-divider"></div>
+      <a href="#" class="dashboard-nav-item">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </nav>
+  </div>
+  <header class="dashboard-toolbar">
+    <!-- <i class="fa-solid fa-user-shield" style="color: azure;"></i> -->
+
+    <div class="custom-text-color" style="padding-left: 5px;">Employee Management System</div>
+    <div class="toolbar-right">
+     
+      <div class="dropdown">
+        <button class="btn button-container dropdown-toggle custom-text-color" type="button" id="featuresDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Features
+        </button>
+        <div class="dropdown-menu" aria-labelledby="featuresDropdown">
+          <a class="dropdown-item" href="#">Feature 1</a>
+          <a class="dropdown-item" href="#">Feature 2</a>
+          <a class="dropdown-item" href="#">Feature 3</a>
+        </div>
+      </div>
+
+        <div class="dropdown">
+          <button class="btn button-container dropdown-toggle custom-text-color" type="button" id="helpDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Help
+          </button>
+          <div class="dropdown-menu" aria-labelledby="helpDropdown">
+            <a class="dropdown-item" href="">Help Center</a>
+            <a class="dropdown-item" href="#">Support</a>
+            <a class="dropdown-item" href="#">Contact Us</a>
+          </div>
+      </div>
+    </div>
+  </header>
+</div>

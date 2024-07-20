@@ -1,0 +1,87 @@
+<div class="container">
+  <app-side-nav></app-side-nav>
+
+  <div class="button-container" >
+    <button class="button" (click)="openAddDialog()">Add</button>
+  </div>
+
+  <!-- Add/Edit Department Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content modal-custom-content">
+        <div class="modal-header modal-custom-header" style="background-color: rgb(78, 54, 210);">
+          <p class="modal-title" id="addModalLabel"style="color: aliceblue;">{{ departmentId ? 'EDIT' : 'ADD' }} DEPARTMENT</p>
+        </div>
+        <form (ngSubmit)="onSubmit()">
+          <!-- Hidden input for departmentId -->
+          <input type="hidden" [(ngModel)]="departmentId" name="departmentId">
+
+          <!-- Department Name -->
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="departmentName">Dept:</label>
+                <input type="text" class="form-control" id="departmentName" name="departmentName" [(ngModel)]="departmentName" required>
+              </div>
+
+    
+            <!-- Department Description -->
+            <div class="form-group">
+              <label for="departmentDescription" > Description:</label>
+              <input type="text" class="form-control" id="departmentDescription" [(ngModel)]="departmentDescription" name="departmentDescription" required>
+            </div>
+        
+          <div class="form-group">
+            <label for="createdBy" >createdBy:</label>
+            <input  type="text" class="form-control" id="createdBy" [(ngModel)]="createdBy" name="createdBy" required>
+          </div>
+        </div>
+          <!-- Modal footer with buttons -->
+          <div class="modal-footer modal-custom-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeAddDialog()">Close</button>
+            <button type="submit" class="btn btn-primary">{{ departmentId ? 'Save ' : 'save' }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="descriptionModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content modal-custom-content">
+        <div class="modal-header modal-custom-header" style="background-color: rgb(78, 54, 210);">
+          <p class="modal-title" id="descriptionModalLabel" style="color: aliceblue;">DEPARTMENT DESCRIPTION</p>
+        </div>
+        <div class="modal-body">
+          <p *ngIf="selectedDepartment">
+            <strong> ID:</strong> {{ selectedDepartment.departmentId }}<br>
+          <strong> Name:</strong> {{ selectedDepartment.departmentName }}<br>
+          <strong> Description:</strong> {{ selectedDepartment.departmentDescription }}<br>
+          <strong>Created Date:</strong> {{ selectedDepartment.createdDate | date:'MM/dd/yyyy' }}<br>
+          <strong>created By:</strong> {{ selectedDepartment.createdBy }}<br>
+
+          </p>
+        </div>
+        <div class="modal-footer modal-custom-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+  <!-- Ag-Grid Table -->
+  <ag-grid-angular
+    class="ag-theme-alpine"
+    style="height: 530px; width: 1200px;  padding-bottom: 50px; margin-left: 150px; "
+    [rowData]="userList"
+    [columnDefs]="colDefs"
+    [sideBar]="true"
+    [suppressMenuHide]="true"
+    [defaultColDef]="defaultColDef"
+    [ngClass]="themeClass"
+    (gridReady)="onGridReady($event)"
+    (cellValueChanged)="onCellValueChanged($event)">
+    
+  </ag-grid-angular>
+</div>

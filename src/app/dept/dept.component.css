@@ -1,0 +1,129 @@
+/* Modal Customization */
+.modal-custom-content {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-custom-header {
+  background-color: rgb(78, 54, 210);
+  color: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 10px 10px;
+}
+
+.modal-custom-footer {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #f1f1f1;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* Adjust Button Styles */
+.modal-custom-footer .btn-secondary {
+  background-color: transparent;
+  color: #000;
+}
+
+.modal-custom-footer .btn-secondary:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.modal-custom-footer .btn-primary {
+  background-color: #059611;
+  color: white;
+  border: none;
+}
+
+.modal-custom-footer .btn-primary:hover {
+  background-color: #046a0e;
+}
+
+/* Reduce Padding/Margin */
+.modal-body {
+  padding: 15px 20px;
+}
+
+.modal-content {
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 50px;
+}
+
+.button-container {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  width: 5px;
+  height: 5px;
+}
+
+.button {
+  padding: 7px 8px;
+  background-color: #059611;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #20b946;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: 3px solid transparent;
+  border-radius: 2px;
+  padding: 5px 10px;
+}
+
+.delete-button:hover {
+  border: 2px solid white;
+  background-color: darkred;
+}
+
+/* Ag-Grid styling */
+.ag-theme-alpine {
+  width: 550px;
+  height: 500px;
+  overflow: hidden;
+}
+
+.ag-theme-alpine .ag-header {
+  background-color: #f1f1f1;
+}
+
+.ag-theme-alpine .ag-row {
+  font-size: 14px;
+}
+
+.ag-theme-alpine .ag-cell {
+  padding: 8px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center; /* Align vertically */
+  margin-bottom: 10px;
+}
+
+
+label {
+  width: 120px; /* Set a fixed width for labels */
+  margin-right: 10px; /* Optional: Add some spacing between label and input */
+}
+
+input {
+  flex: 1; /* Take up remaining space */
+}

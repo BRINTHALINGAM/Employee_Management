@@ -1,0 +1,118 @@
+<div class="container">
+  <app-side-nav></app-side-nav>
+
+  <div class="button-container">
+      <button class="button" (click)="openAddDialog()">Add</button>
+  </div>
+
+  <!-- Add/Edit Employee Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content modal-custom-content">
+              <div class="modal-header modal-custom-header" style="background-color: rgb(78, 54, 210);">
+                  <p class="modal-title" id="addModalLabel" style="color: aliceblue;">{{ employeeID ? 'EDIT' : 'ADD' }} EMPLOYEE</p>
+              </div>
+              <form (ngSubmit)="onSubmit()">
+                  <!-- Hidden input for employeeID -->
+                  <input type="hidden" [(ngModel)]="employeeID" name="employeeID">
+
+                  <!-- Employee Name -->
+                  <div class="modal-body">
+                      <div class="form-group">
+                          <label for="employeeName">Employee Name:</label>
+                          <input type="text" class="form-control" id="employeeName" name="employeeName" [(ngModel)]="employeeName" required>
+                      </div>
+
+                      <!-- Department Name -->
+<div class="form-group">
+    <label for="departmentName">Department Name:</label>
+    <select class="form-control" style='width: 75%' d="departmentName" name="departmentName" [(ngModel)]="departmentName" (change)="onDepartmentChange()">
+      <option *ngFor="let department of departments" [value]="department.departmentName">{{ department.departmentName }}</option>
+    </select>
+  </div>
+  
+  <!-- Hidden Input for Department ID -->
+  <input type="hidden" id="departmentId" name="departmentId" [(ngModel)]="departmentId">
+  
+
+                      <!-- Salary -->
+                      <div class="form-group">
+                          <label for="salary">Salary:</label>
+                          <input type="text" class="form-control" id="salary" name="salary" [(ngModel)]="salary" required>
+                      </div>
+
+                      <!-- First Name -->
+                      <div class="form-group">
+                          <label for="firstName">First Name:</label>
+                          <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="firstName" required>
+                      </div>
+
+                      <!-- Last Name -->
+                      <div class="form-group">
+                          <label for="lastName">Last Name:</label>
+                          <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="lastName" required>
+                      </div>
+
+                      <!-- Email -->
+                      <div class="form-group">
+                          <label for="email">Email:</label>
+                          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" required>
+                      </div>
+
+                      <!-- Username -->
+                      <div class="form-group">
+                          <label for="userName">Username:</label>
+                          <input type="text" class="form-control" id="userName" name="userName" [(ngModel)]="userName" required>
+                      </div>
+                  </div>
+
+                  <!-- Modal footer with buttons -->
+                  <div class="modal-footer modal-custom-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeAddDialog()">Close</button>
+                      <button type="submit" class="btn btn-primary">{{ employeeID ? 'Save' : 'Add' }}</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+
+  <!-- Employee Description Modal -->
+  <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="descriptionModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content modal-custom-content">
+              <div class="modal-header modal-custom-header" style="background-color: rgb(78, 54, 210);">
+                  <p class="modal-title" id="descriptionModalLabel" style="color: aliceblue;">EMPLOYEE DETAILS</p>
+              </div>
+              <div class="modal-body">
+                  <p *ngIf="selectedEmployee">
+                      <strong>ID:</strong> {{ selectedEmployee.employeeId }}<br>
+                      <strong>Name:</strong> {{ selectedEmployee.employeeName }}<br>
+                      <strong>Department Name:</strong> {{ selectedEmployee.departmentName }}<br>
+                      <strong>Salary:</strong> {{ selectedEmployee.salary }}<br>
+                      <strong>First Name:</strong> {{ selectedEmployee.firstName }}<br>
+                      <strong>Last Name:</strong> {{ selectedEmployee.lastName }}<br>
+                      <strong>Email:</strong> {{ selectedEmployee.email }}<br>
+                      <strong>Username:</strong> {{ selectedEmployee.userName }}<br>
+                  </p>
+              </div>
+              <div class="modal-footer modal-custom-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Ag-Grid Table -->
+  <ag-grid-angular
+      class="ag-theme-alpine"
+      style="height: 530px; width: 1200px; padding-bottom: 55px; margin-left: 140px; margin-right: -32.5px;"
+      [rowData]="userList"
+      [columnDefs]="colDefs"
+      [sideBar]="true"
+      [suppressMenuHide]="true"
+      [defaultColDef]="defaultColDef"
+      [ngClass]="themeClass"
+      (gridReady)="onGridReady($event)"
+      (cellValueChanged)="onCellValueChanged($event)">
+  </ag-grid-angular>
+</div>
